@@ -25,3 +25,8 @@ Entao('devo ver esse item no meu Dashboard') do
     expect(@dash_page.equipo_list).to have_content @anuncio[:nome]
     expect(@dash_page.equipo_list).to have_content "R$#{@anuncio[:preco]}/dia"
 end
+
+Então('deve conter a mensagem de alerta: {string}') do |expect_alert|
+    # have_text verifica se a mensagem contém o texto recebido no argumento
+    expect(@alert.dark).to have_text expect_alert
+  end
