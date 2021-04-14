@@ -29,4 +29,4 @@ end
 Então('deve conter a mensagem de alerta: {string}') do |expect_alert|
     # have_text verifica se a mensagem contém o texto recebido no argumento
     expect(@alert.dark).to have_text expect_alert
-  end
+end
