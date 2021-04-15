@@ -8,6 +8,6 @@ Before do
   #comando para maximizar a tela do navegador
   #page.driver.browser.manage.window.maximize
 
-  #determina um tamanho específico para a janela do navegador
+  #determina um tamanho específico para a janela do navegador novo
   page.current_window.resize_to(1140, 900)
 end
