@@ -1,8 +1,8 @@
-Dado('que acesso a página de cadastro') do
+Dado("que acesso a página de cadastro") do
   @signup_page.open
 end
 
-Quando('submeto o seguinte formulário de cadastro:') do |table|
+Quando("submeto o seguinte formulário de cadastro:") do |table|
   #converte a tabela em array e apresenta a primeira posição dele
   user = table.hashes.first
 

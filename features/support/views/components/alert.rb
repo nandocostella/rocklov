@@ -1,8 +1,7 @@
-
 class Alert
-    include Capybara::DSL
+  include Capybara::DSL
 
-    def dark
-        return alert = find(".alert-dark").text
-    end
+  def dark
+    return alert = find(".alert-dark").text
+  end
 end
