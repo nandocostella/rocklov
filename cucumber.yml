@@ -1,3 +1,7 @@
 ---
 # Desabilita o cucumber reports
-default: --publish-quiet
+default: --publish-quiet 
+
+# trabalhando com profiles diferentes no relatório do cucumber
+bdd: -f pretty
+dots: -f progress
