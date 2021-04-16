@@ -1,0 +1,3 @@
+---
+# Desabilita o cucumber reports
+default: --publish-quiet
