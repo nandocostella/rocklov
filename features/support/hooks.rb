@@ -11,3 +11,14 @@ Before do
   #determina um tamanho específico para a janela do navegador novo
   page.current_window.resize_to(1140, 900)
 end
+
+# coonfiguração para tirar uma evidência no final de cada cenário usando os hooks.
+After do
+  temp_shot = page.save_screenshot("logs/temp_screenshot.png")
+
+  Allure.add_attachment(
+    name: "screenshot",
+    type: Allure::ContentType::PNG,
+    source: File.open(temp_shot),
+  )
+end
