@@ -1,9 +1,11 @@
 ---
 # Desabilita o cucumber reports
-default: --publish-quiet -p allure -p bdd
+default: --publish-quiet -p allure -p bdd -p local
 
 # trabalhando com profiles diferentes no relatório do cucumber
 bdd: -f pretty
 dots: -f progress
 html: -f html -o logs/report.html
 allure: --format AllureCucumber::CucumberFormatter --out=logs
+local: CONFIG=local.yml
+hmg: CONFIG=hmg.yml
