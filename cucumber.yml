@@ -1,6 +1,6 @@
 ---
 # Desabilita o cucumber reports
-default: --publish-quiet -p allure -p bdd -p local -p chrome_headless
+default: --publish-quiet -p allure -p bdd -p local -p chrome
 
 # trabalhando com profiles diferentes no relatório do cucumber
 bdd: -f pretty
