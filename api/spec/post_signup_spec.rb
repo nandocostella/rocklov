@@ -40,7 +40,43 @@ describe "POST /signup" do
     it "deve retornar mensagem" do
       expect(@result.parsed_response["error"]).to eql "Email already exists :("
     end
-
   end
 
+  examples = [
+    {
+      title: "Nome obrigatorio",
+      payload: { email: "teste2@teste.com", password: "123456" },
+      code: 412,
+      error: "required name",
+    },
+    {
+      title: "Email obrigatorio",
+      payload: { name: "Fernando", password: "123456" },
+      code: 412,
+      error: "required email",
+    },
+    {
+      title: "Password obrigatorio",
+      payload: { name: "Fernando", email: "teste2@teste.com" },
+      code: 412,
+      error: "required password",
+    },
+  ]
+
+  examples.each do |e|
+    context "#{e[:title]}" do
+      # o :all faz com que o before execute apenas uma vez o before
+      before (:all) do
+        @result = Signup.new.create(e[:payload])
+      end
+
+      it "valida status code #{e[:code]}" do
+        expect(@result.code).to eql e[:code]
+      end
+
+      it "valida mensagem de erro" do
+        expect(@result.parsed_response["error"]).to eql e[:error]
+      end
+    end
+  end
 end
