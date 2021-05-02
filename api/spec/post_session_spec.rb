@@ -1,6 +1,3 @@
-require_relative "routes/sessions"
-require_relative "helpers"
-
 describe "POST /session" do
   context "login com sucesso" do
     # o :all faz com que o before execute apenas uma vez o before
