@@ -7,11 +7,10 @@ describe "POST /equipos" do
 
   context "novo equipo" do
     before(:all) do
-      # com o argumento rb ele recupera o valor da imagem corretamente. Sem o argumento a imagem fica em branco
-      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "kramer.jpg"), "rb")
 
+      # com o argumento rb ele recupera o valor da imagem corretamente. Sem o argumento a imagem fica em branco
       payload = {
-        thumbnail: thumbnail,
+        thumbnail: Helpers::get_thumb("kramer.jpg"),
         name: "kramer Eddie Van Halen",
         category: "Cordas",
         price: 350,
@@ -30,10 +29,8 @@ describe "POST /equipos" do
   context "não autorizado" do
     before(:all) do
       # com o argumento rb ele recupera o valor da imagem corretamente. Sem o argumento a imagem fica em branco
-      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "baixo.jpg"), "rb")
-
       payload = {
-        thumbnail: thumbnail,
+        thumbnail: Helpers::get_thumb("baixo.jpg"),
         name: "Contra baixo",
         category: "Cordas",
         price: 59,
@@ -46,6 +43,4 @@ describe "POST /equipos" do
       expect(@result.code).to eql 401
     end
   end
-
-
 end
