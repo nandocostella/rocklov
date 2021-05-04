@@ -16,10 +16,11 @@ class MongoDB
     return user[:_id]
   end
 
-  def remove_equipo(name, email)
-    user_id = get_user(email)
+  def remove_equipo(name, user_id)
+    # converte a variavel user_id de string para object id
+    obj_id = BSON::ObjectId.from_string(user_id)
     client = Mongo::Client.new("mongodb://rocklov-db:27017/rocklov")
     equipos = client[:equipos]
-    equipos.delete_many({ name: name, user: user_id })
+    equipos.delete_many({ name: name, user: obj_id })
   end
 end
