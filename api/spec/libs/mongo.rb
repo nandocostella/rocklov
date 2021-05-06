@@ -23,4 +23,11 @@ class MongoDB
     equipos = client[:equipos]
     equipos.delete_many({ name: name, user: obj_id })
   end
+
+  # cria um objectid aleatório válido mas que não existe para ser usado no teste de retorno 404
+  def get_mongo_id
+    return BSON::ObjectId.new
+  end
+
+
 end

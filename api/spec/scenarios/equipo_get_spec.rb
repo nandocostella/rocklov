@@ -34,4 +34,16 @@ describe "GET /equipos/{equipo_id}" do
     end
 
   end
+
+  context "equipo nao existe" do
+
+    before(:all) do
+      @result = Equipos.new.find_by_id(MongoDB.new.get_mongo_id, @user_id)
+    end
+
+    it "deve retornar 404" do
+      expect(@result.code).to eql 404
+    end
+
+  end
 end
