@@ -28,4 +28,16 @@ class Equipos < BaseApi
              },
            )
   end
+
+  def list(user_id)
+    return self.class.get(
+             "/equipos/",
+             headers: {
+               "user_id": user_id,
+             },
+           )
+  end
+
+
+
 end
