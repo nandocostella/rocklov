@@ -2,7 +2,7 @@ describe "POST /session" do
   context "login com sucesso" do
     # o :all faz com que o before execute apenas uma vez o before
     before (:all) do
-      payload = { email: "teste@teste.com", password: "123456" }
+      payload = { email: "betao@hotmail.com", password: "123456" }
       @result = Sessions.new.login(payload)
     end
 

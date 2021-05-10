@@ -1,6 +1,6 @@
 describe "POST /equipos/{equipo_id}/bookings" do
   before (:all) do
-    payload = { email: "nando@teste.com", password: "123456" }
+    payload = { email: "ed@gmail.com", password: "123456" }
     result = Sessions.new.login(payload)
     @nando_id = result.parsed_response["_id"]
   end
