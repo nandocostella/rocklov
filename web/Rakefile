@@ -1,0 +1,33 @@
+require "digest/md5"
+require_relative "features/support/libs/mongo"
+
+# método para converter senha em MD5
+def to_md5(pass)
+  return Digest::MD5.hexdigest(pass)
+end
+
+task :test do
+  puts "Executando uma tarefa de testes"
+end
+
+task :local_seeds do
+  CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/local.yml"))
+
+  users = [
+    { name: "Teste", email: "teste@teste.com", password: to_md5("123456") },
+  ]
+  MongoDB.new.drop_danger
+  MongoDB.new.insert_users(users)
+
+  sh "cucumber"
+end
+
+task :hmg_seeds do
+  CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/hmg.yml"))
+
+  users = [
+    { name: "Teste", email: "teste@teste.com", password: to_md5("123456") },
+  ]
+  MongoDB.new.drop_danger
+  MongoDB.new.insert_users(users)
+end
