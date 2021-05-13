@@ -29,3 +29,22 @@ Então("deve conter a mensagem de alerta: {string}") do |expect_alert|
   # have_text verifica se a mensagem contém o texto recebido no argumento
   expect(@alert.dark).to have_text expect_alert
 end
+
+
+# remover anúncios
+Dado("que eu tenho um anúncio indesejado:") do |table|
+  user_id = page.execute_script("return localStorage.getItem('user)")
+  log user_id
+end
+
+Quando("solicito a exclusão desse item") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Quando("confirmo a exclusão") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Entao("não devo ver esse item no meu dashboard") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
