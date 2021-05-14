@@ -1,9 +1,13 @@
-Dado("que eu estou logado com {string} e {string}") do |email, password|
+Dado('Login com {string} e {string}') do |email, password|
   @email = email
 
   @login_page.open
   @login_page.with(email, password)
+  
+  # checkpoint que valida se estou no login antes de sair do step
+  expect(@dash_page.on_dash?).to be true
 end
+
 
 Dado("acesso o formulário de cadastro de anuncios") do
   @dash_page.goto_equipo_form
@@ -33,7 +37,8 @@ end
 
 # remover anúncios
 Dado("que eu tenho um anúncio indesejado:") do |table|
-  user_id = page.execute_script("return localStorage.getItem('user)")
+  # código java script para obter o localStorage do "user"
+  user_id = page.execute_script("return localStorage.getItem('user')")
   log user_id
 end
 

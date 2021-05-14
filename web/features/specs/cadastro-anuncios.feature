@@ -5,11 +5,14 @@ Funcionalidade: Cadastro de anuncios
   Quero cadastrar meus equipamentos
   Para que eu possa disponibiliza-los para locação
 
+  # todo o step que possua o * é tratado como uma pré condição
+  Contexto: Login
+    * Login com "spider@hotmail.com" e "123456"
+
   @anuncios
   Cenario: Novo equipo
 
-    Dado que eu estou logado com "teste@teste.com" e "123456"
-      E acesso o formulário de cadastro de anuncios
+    Dado acesso o formulário de cadastro de anuncios
       E que eu tenha o seguinte equipamentos
       | thumb     | fender-sb.jpg |
       | nome      | Fender Strato |
@@ -18,11 +21,9 @@ Funcionalidade: Cadastro de anuncios
     Quando submeto o cadastro deste item
     Entao devo ver esse item no meu Dashboard
 
-  @temp
   Esquema do Cenario: Tentativa de cadastro de anuncios
 
-    Dado que eu estou logado com "teste@teste.com" e "123456"
-      E acesso o formulário de cadastro de anuncios
+    Dado acesso o formulário de cadastro de anuncios
       E que eu tenha o seguinte equipamentos
       | thumb     | <foto>      |
       | nome      | <nome>      |
