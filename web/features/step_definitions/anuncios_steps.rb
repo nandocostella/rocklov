@@ -1,13 +1,12 @@
-Dado('Login com {string} e {string}') do |email, password|
+Dado("Login com {string} e {string}") do |email, password|
   @email = email
 
   @login_page.open
   @login_page.with(email, password)
-  
+
   # checkpoint que valida se estou no login antes de sair do step
   expect(@dash_page.on_dash?).to be true
 end
-
 
 Dado("acesso o formulário de cadastro de anuncios") do
   @dash_page.goto_equipo_form
@@ -34,12 +33,22 @@ Então("deve conter a mensagem de alerta: {string}") do |expect_alert|
   expect(@alert.dark).to have_text expect_alert
 end
 
-
 # remover anúncios
 Dado("que eu tenho um anúncio indesejado:") do |table|
   # código java script para obter o localStorage do "user"
   user_id = page.execute_script("return localStorage.getItem('user')")
   log user_id
+
+  thumbnail = File.open(File.join(Dir.pwd, "features/support/fixtures/images", table.rows_hash[:thumb]), "rb")
+
+  equipo = {
+    thumbnail: thumbnail,
+    name: table.rows_hash[:nome],
+    category: table.rows_hash[:categoria],
+    price: table.rows_hash[:preco],
+  }
+
+  EquiposService.new.create(equipo, user_id)
 end
 
 Quando("solicito a exclusão desse item") do
