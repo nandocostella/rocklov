@@ -41,24 +41,28 @@ Dado("que eu tenho um anúncio indesejado:") do |table|
 
   thumbnail = File.open(File.join(Dir.pwd, "features/support/fixtures/images", table.rows_hash[:thumb]), "rb")
 
-  equipo = {
+  @equipo = {
     thumbnail: thumbnail,
     name: table.rows_hash[:nome],
     category: table.rows_hash[:categoria],
     price: table.rows_hash[:preco],
   }
 
-  EquiposService.new.create(equipo, user_id)
+  EquiposService.new.create(@equipo, user_id)
+
+  # da um refresh na página pois acessa novamente a mesma página
+  visit current_path
 end
 
 Quando("solicito a exclusão desse item") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @dash_page.request_removal(@equipo[:name])
+  sleep 1 #thinking time
 end
 
 Quando("confirmo a exclusão") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @dash_page.confirm_removal
 end
 
 Entao("não devo ver esse item no meu dashboard") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(@dash_page.has_no_equipo?(@equipo[:name])).to be true
 end
