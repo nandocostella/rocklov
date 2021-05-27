@@ -66,3 +66,13 @@ end
 Entao("não devo ver esse item no meu dashboard") do
   expect(@dash_page.has_no_equipo?(@equipo[:name])).to be true
 end
+
+
+# desistir da exclusão
+Quando('não confirmo a solicitação') do
+@dash_page.cancel_removal
+end
+
+Entao('esse item deve permanecer no meu dashboard') do
+  expect(@dash_page.equipo_list).to have_content @equipo[:name]
+end
