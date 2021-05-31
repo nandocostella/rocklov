@@ -19,4 +19,4 @@ Funcionalidade: Receber pedido de alocação
       """
       maria@locataria.com deseja alugar o equipamento: Trompete em: DATA_ATUAL
       """
-      E devo ver os links "ACEIAR" e "REJEITAR" no pedido
+      E devo ver os links "ACEITAR" e "REJEITAR" no pedido
