@@ -36,13 +36,16 @@ Quando("{string} e {string} solicita a locação desse equipamento") do |email, 
 end
 
 Entao("devo ser a seguinte mensagem:") do |doc_string|
+  #gsub substitui o texto DATA ATUAL pela sub string 
   expect_message = doc_string.gsub("DATA_ATUAL", Time.now.strftime("%d/%m/%Y"))
   
-  order = find(".notifications p")
-  expect(order).to have_text expect_message
+  expect(@dash_page.order).to have_text expect_message
 end
 
 Entao("devo ver os links {string} e {string} no pedido") do |button_accept, button_reject|
   expect(page).to have_selector ".notifications button", text: button_accept
   expect(page).to have_selector ".notifications button", text: button_reject
+
+  expect(@dash_page.order_actions(button_accept)).to be true
+  expect(@dash_page.order_actions(button_reject)).to be true
 end
