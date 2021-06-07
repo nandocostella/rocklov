@@ -1,3 +1,7 @@
-*.png
-*.json
-*.csv
+logs/*.log
+logs/*.html
+logs/*.xml
+logs/*.json
+logs/*.png
+logs/*.csv
+logs/*.txt
