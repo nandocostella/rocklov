@@ -93,3 +93,7 @@ describe "GET /equipos" do
     end
   end
 end
+
+# testando
+
+# testando git 2
